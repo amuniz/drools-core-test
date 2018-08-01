@@ -1,0 +1,9 @@
+global com.cloudbees.drools.RulesResult result;
+dialect  "mvel"
+
+rule "Coverage > 70"
+    when
+        buildFactInstance:com.cloudbees.drools.BuildFact(coverage < 70);
+    then
+        result.put("Coverage > 70", Boolean.FALSE)
+end

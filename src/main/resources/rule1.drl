@@ -1,0 +1,9 @@
+global com.cloudbees.drools.RulesResult result;
+dialect  "mvel"
+
+rule "Must have tests"
+    when
+        buildFactInstance:com.cloudbees.drools.BuildFact(hasTests == false);
+    then
+        result.put("Must have tests", Boolean.FALSE)
+end
